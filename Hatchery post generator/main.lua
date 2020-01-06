@@ -861,7 +861,7 @@ for name, id in pairs(dragons) do
 		string.lower(flight),
 		name, primaryC, primaryG, secondaryC, secondaryG, tertiaryC, tertiaryG,
 		eyes, flight, id,
-		tonumber(tostring(id):sub(1,5))+1, id))
+		tonumber(tostring(id):sub(1,-3))+1, id))
 end
 
 driver.close()
