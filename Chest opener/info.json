@@ -1,0 +1,7 @@
+{
+	"Name": "Chest opener",
+	"Description": "Macro to open all your rusted chests",
+	"Authors": "BestMordaEver",
+	"Contact": "https://github.com/BestMordaEver/",
+	"EntryPoint": "main.lua"
+}

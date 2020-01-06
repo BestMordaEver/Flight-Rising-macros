@@ -1,0 +1,7 @@
+{
+	"Name": "Food counting",
+	"Description": "Counts amount of food points currently in hoard",
+	"Authors": "BestMordaEver",
+	"Contact": "https://github.com/BestMordaEver/",
+	"EntryPoint": "main.lua"
+}

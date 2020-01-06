@@ -1,0 +1,7 @@
+{
+	"Name": "Hatchery post generator",
+	"Description": "Generates posts for hatchery with a template",
+	"Authors": "BestMordaEver",
+	"Contact": "https://github.com/BestMordaEver/",
+	"EntryPoint": "main.lua"
+}

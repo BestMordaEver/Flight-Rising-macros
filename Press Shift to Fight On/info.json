@@ -1,0 +1,7 @@
+{
+	"Name": "Press Shift to Fight On",
+	"Description": "When this script is launched, pressing Shift button also presses left mouse button",
+	"Authors": "BestMordaEver",
+	"Contact": "https://github.com/BestMordaEver/",
+	"EntryPoint": "main.lua"
+}

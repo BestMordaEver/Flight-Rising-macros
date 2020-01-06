@@ -1,0 +1,7 @@
+{
+	"Name": "Full bonding macro",
+	"Description": "Macro to automatically bond with all your familiars",	
+	"Authors": "BestMordaEver",
+	"Contact": "https://github.com/BestMordaEver/",
+	"EntryPoint": "main.lua"
+}
