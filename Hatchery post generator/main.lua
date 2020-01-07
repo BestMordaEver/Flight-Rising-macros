@@ -16,8 +16,8 @@ local str = [[
 [b]%s[/b] | %s
 [b]%s %s Eyes[/b]
 [/center]
-[center][img]http://www1.flightrising.com/static/layout/icon_treasure.png[/img][b]12345[/b][img]http://www1.flightrising.com/static/layout/icon_treasure.png[/img][/center]
-[center][img]http://www1.flightrising.com/static/layout/icon_gems.png[/img][b]123[/b][img]http://www1.flightrising.com/static/layout/icon_gems.png[/img][/center]
+[center][emoji=treasure] [b]25000[/b] [emoji=treasure][/center]
+[center][emoji=gem] [b]25[/b] [emoji=gem][/center]
 [center]
 [url=http://flightrising.com/main.php?dragon=%s]
 [img]https://www1.flightrising.com/rendern/avatars/%s/%s.png[/img]
@@ -504,8 +504,8 @@ local traits = {
 		[71] = "Sapphire",
 		["Navy"] = 20,
 		[20] = "Navy",
-		["Cobalt"] = 163,
-		[163] = "Cobalt",
+		["Cobalt"] = 136,
+		[136] = "Cobalt",
 		["Ultramarine"] = 90,
 		[90] = "Ultramarine",
 		["Blue"] = 21,
