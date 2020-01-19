@@ -69,7 +69,7 @@ print("\nFound "..loops.." unused familiars\nYou now can override which familiar
 local i = 1
 while i ~= loops+1 do
 	elems = driver.findElementsByXPath('//a[@class="clue"]')
-	driver.findElementsByXPath('//*[@id="food_bar"]/span[1]/a')[1].click()
+	driver.findElementsByXPath('//*[@id="food_bar"]/span[1]/a/img')[1].click()
 	elems[i].click() -- select fam
 	sleep(0.5)
 	

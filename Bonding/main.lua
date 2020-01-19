@@ -20,7 +20,8 @@ print("\nFound "..loops.." unused familiars\nYou now can override which familiar
 
 local i, fams = 1, 0
 while i ~= loops+1 do
-	elems = driver.findElementsByXPath('//a[@class="clue"]')
+	elems = driver.findElementsByXPath('//a[@class="clue"]')	-- familiars
+	driver.findElementsByXPath('//*[@id="food_bar"]/span[1]/a/img')[1].click()	-- insects image
 	sleep(0.5)
 	
 	elems[i].click()
@@ -30,7 +31,7 @@ while i ~= loops+1 do
 	sleep(0.5)
 	
 	local result = pcall(function() 
-		driver.findElementsByXPath('//a[@title="Click here to bond with your familiar. You may do this once a day."]')[1].click()
+		driver.findElementsByXPath('//a[@title="Click here to bond with your familiar. You may do this once a day."]')[1].click()	-- heart button
 		sleep(0.5)
 	end)
 	
@@ -48,12 +49,10 @@ while i ~= loops+1 do
 	driver.GoToUrl("http://flightrising.com/main.php?tab=familiar&did="..config.dragon)
 	sleep(1)
 	
-	driver.findElementsByXPath('//*[@id="super-container"]/div[4]/fieldset[2]/div[2]/input')[1].click()
+	driver.findElementsByXPath('//*[@id="super-container"]/div[4]/fieldset[2]/div[2]/input')[1].click()		-- remove familiar button
 	sleep(2)
 	i = i+1
 end
-
-driver.findElementsByXPath('//input[@value="Remove Familiar"]')[1].click()
 
 print("Done, bonded with "..fams.." familiars, closing")
 driver.close()
