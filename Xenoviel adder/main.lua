@@ -14,18 +14,18 @@ for _, id in pairs(dragons) do
 	driver.GoToUrl("https://flightrising.com/main.php?dragon="..id)
 	
 	local data = {
-		select(3, driver.findElementsByXPath('//*[@id="super-container"]/div[2]/span')[1].text:find("(%a+)")), -- Name
+		driver.findElementsByXPath('//*[@id="super-container"]/div[2]/span')[1].text:match("(%a+)")), -- Name
 		id, -- ID
-		select(3, driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[2]/div/div[2]')[1].text:find("(%a+)")), -- Breed
-		select(3, driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div[4]')[1].text:find("%a+%s%u%l+(%u%l+)")), -- Flight
-		select(3, driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div[4]')[1].text:find("%a+%s%a+%s(%a+)")), -- Eyes
-		select(3, driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[2]/div/div[2]')[1].text:find("%s(%a+)")), -- Sex
-		select(3, driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div')[1].text:find("%l+(%u%a+)")), -- Primary Color
-		select(3, driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div')[1].text:find("%l+%u%l+%s(%a+)")), -- Primary Gene
-		select(3, driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div')[2].text:find("%l+(%u%a+)")), -- Primary Color
-		select(3, driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div')[2].text:find("%l+%u%l+%s(%a+)")), -- Primary Gene
-		select(3, driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div')[3].text:find("%l+(%u%a+)")), -- Primary Color
-		select(3, driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div')[3].text:find("%l+%u%l+%s(%a+)")) -- Primary Gene
+		driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[2]/div/div[2]')[1].text:match("(%a+)")), -- Breed
+		driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div[4]')[1].text:match("%a+%s%u%l+(%u%l+)")), -- Flight
+		driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div[4]')[1].text:match("%a+%s%a+%s(%a+)")), -- Eyes
+		driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[2]/div/div[2]')[1].text:match("%s(%a+)")), -- Sex
+		driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div')[1].text:match("%l+(%u%a+)")), -- Primary Color
+		driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div')[1].text:match("%l+%u%l+%s(%a+)")), -- Primary Gene
+		driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div')[2].text:match("%l+(%u%a+)")), -- Primary Color
+		driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div')[2].text:match("%l+%u%l+%s(%a+)")), -- Primary Gene
+		driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div')[3].text:match("%l+(%u%a+)")), -- Primary Color
+		driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div')[3].text:match("%l+%u%l+%s(%a+)")) -- Primary Gene
 	}
 	
 	driver.GoToUrl(config.form)
