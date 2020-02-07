@@ -28,13 +28,13 @@ for i = 1, buttons do
 	
 	for j = 1, #driver.findElementsByXPath('//*[@id="invent"]/span') do
 		driver.findElementsByXPath('//*[@id="invent"]/span['..j..']')[1].click()
-		sleep(0.6)
+		sleep(0.8)
 		local type = driver.findElementsByXPath('//*[@id="cluetip"]/div[1]/div/div/div[1]/div[2]')[1].text
 		local amount = #driver.findElementsByXPath('//*[@id="invent"]/span['..j..']/select/option')
 		local cost = driver.findElementsByXPath('//*[@id="cluetip"]/div[1]/div/div/div[3]')[1].text
 		local potency = driver.findElementsByXPath('//*[@id="cluetip"]/div[1]/div/div/div[4]')[1].text
-		foodpoints[type] = foodpoints[type] + amount*potency
-		foodcost[type] = foodcost[type] + amount*cost
+		foodpoints[type] = foodpoints[type] + amount*tonumber(potency)
+		foodcost[type] = foodcost[type] + amount*tonumber(cost)
 		
 		print(j,amount,cost,potency,type)
 		driver.findElementsByXPath('//*[@id="food_bar"]/span[1]/a')[1].click()
