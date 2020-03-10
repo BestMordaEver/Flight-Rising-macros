@@ -1,0 +1,7 @@
+{
+	"Name": "Baldwin Queue",
+	"Description": "Allows to queue Baldwin's transmutations and object creation",
+	"Authors": "BestMordaEver",
+	"Contact": "https://github.com/BestMordaEver/",
+	"EntryPoint": "main.lua"
+}

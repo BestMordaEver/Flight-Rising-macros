@@ -742,8 +742,8 @@ local traits = {
 		[64] = "Coral",
 		["Blush"] = 159,
 		[159] = "Blush",
-		["Cotton Candy"] = 164,
-		[164] = "Cotton Candy",
+		["Cottoncandy"] = 164,
+		[164] = "Cottoncandy",
 		["Watermelon"] = 120,
 		[120] = "Watermelon",
 		["Magenta"] = 65,
@@ -818,18 +818,17 @@ local traits = {
 }
 
 local function scry (breed, gender, age, primaryG, primaryC, secondaryG, secondaryC, tertiaryG, tertiaryC, flight, eyes)
-	assert(type(breed) == "string", "bad argument #1 to 'scry' (string expected, got "..type(breed)..")")
-	assert(type(gender) == "string", "bad argument #2 to 'scry' (string expected, got "..type(gender)..")")
-	assert(type(age) == "string", "bad argument #3 to 'scry' (string expected, got "..type(age)..")")
-	assert(type(primaryG) == "string", "bad argument #4 to 'scry' (string expected, got "..type(primaryG)..")")
-	assert(type(primaryC) == "string", "bad argument #5 to 'scry' (string expected, got "..type(primaryC)..")")
-	assert(type(secondaryG) == "string", "bad argument #6 to 'scry' (string expected, got "..type(secondaryG)..")")
-	assert(type(secondaryC) == "string", "bad argument #7 to 'scry' (string expected, got "..type(secondaryC)..")")
-	assert(type(tertiaryG) == "string", "bad argument #8 to 'scry' (string expected, got "..type(tertiaryG)..")")
-	assert(type(tertiaryC) == "string", "bad argument #9 to 'scry' (string expected, got "..type(tertiaryC)..")")
-	assert(type(flight) == "string", "bad argument #10 to 'scry' (string expected, got "..type(flight)..")")
-	assert(type(eyes) == "string", "bad argument #11 to 'scry' (string expected, got "..type(eyes)..")")
-	return string.format("https://www1.flightrising.com/scrying/predict?breed=%s&gender=%s&age=%s&bodygene=%s&body=%s&winggene=%s&wings=%s&tertgene=%s&tert=%s&element=%s&eyetype=%s", traits.breed[breed], traits.gender[gender], traits.age[age], traits.primary[primaryG], traits.color[primaryC], traits.secondary[secondaryG], traits.color[secondaryC], traits.tertiary[tertiaryG], traits.color[tertiaryC], traits.flight[flight], traits.eyes[eyes])
+	return "https://www1.flightrising.com/scrying/predict?breed="..traits.breed[breed]
+		.."&gender="..traits.gender[gender]
+		.."&age="..traits.age[age]
+		.."&bodygene="..traits.primary[primaryG]
+		.."&body="..traits.color[primaryC]
+		.."&winggene="..traits.secondary[secondaryG]
+		.."&wings="..traits.color[secondaryC]
+		.."&tertgene="..traits.tertiary[tertiaryG]
+		.."&tert="..traits.color[tertiaryC]
+		.."&element="..traits.flight[flight]
+		.."&eyetype="..traits.eyes[eyes]
 end
 
 local driver = webdriver.create()
@@ -837,16 +836,16 @@ local driver = webdriver.create()
 for name, id in pairs(dragons) do
 	driver.GoToUrl("https://flightrising.com/main.php?dragon="..id)
 	
-	local breed = select(3, driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[2]/div/div[2]')[1].text:find("(%a+)"))
-	local flight = select(3, driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div[4]')[1].text:find("%a+%s%u%l+(%u%l+)"))
-	local eyes = select(3, driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div[4]')[1].text:find("%a+%s%a+%s(%a+)"))
-	local gender = select(3, driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[2]/div/div[2]')[1].text:find("%s(%a+)"))
-	local primaryC = select(3, driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div')[1].text:find("%l+(%u%a+)"))
-	local primaryG = select(3, driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div')[1].text:find("%l+%u%l+%s(%a+)"))
-	local secondaryC = select(3, driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div')[2].text:find("%l+(%u%a+)"))
-	local secondaryG = select(3, driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div')[2].text:find("%l+%u%l+%s(%a+)"))
-	local tertiaryC = select(3, driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div')[3].text:find("%l+(%u%a+)"))
-	local tertiaryG = select(3, driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div')[3].text:find("%l+%u%l+%s(%a+)"))
+	local breed = driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[2]/div/div[2]')[1].text:match("%a+")
+	local flight = driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div[4]')[1].text:match("%a+%s%u%l+(%u%l+)")
+	local eyes = driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div[4]')[1].text:match("%a+%s%a+%s(%a+)")
+	local gender = driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[2]/div/div[2]')[1].text:match("%s(%a+)")
+	local primaryC = driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div')[1].text:match("%l+(%u%a+)")
+	local primaryG = driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div')[1].text:match("%l+%u%l+%s(%a+)")
+	local secondaryC = driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div')[2].text:match("%l+(%u%a+)")
+	local secondaryG = driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div')[2].text:match("%l+%u%l+%s(%a+)")
+	local tertiaryC = driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div')[3].text:match("%l+(%u%a+)")
+	local tertiaryG = driver.findElementsByXPath('//*[@id="newname"]/fieldset/div[2]/span[8]/div/div')[3].text:match("%l+%u%l+%s(%a+)")
 	
 	driver.GoToUrl(scry(breed, gender, "Dragon", primaryG, primaryC, secondaryG, secondaryC, tertiaryG, tertiaryC, flight, eyes))
 	driver.findElementsByXPath('//*[@id="morphology-image-link"]')[1].click()
