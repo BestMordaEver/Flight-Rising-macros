@@ -38,7 +38,6 @@ for i = 1, buttons do
 		
 		driver.findElementsByXPath('//*[@id="closeprev"]')[1].click()
 	end
-	break
 end
 
 driver.close()
