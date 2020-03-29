@@ -1,0 +1,7 @@
+{
+	"Name": "Apparel post generator",
+	"Description": "Counts apparel and displays them in structured form",
+	"Authors": "BestMordaEver",
+	"Contact": "https://github.com/BestMordaEver/",
+	"EntryPoint": "main.lua"
+}

@@ -8,6 +8,7 @@ end
 do
 	local localPrint = print
 	file = assert(io.open("data/packages/log.txt", "w"))
+	file:setvbuf("no")
 	function print(...)
 		localPrint(...)
 		file:write(...,"\n")
