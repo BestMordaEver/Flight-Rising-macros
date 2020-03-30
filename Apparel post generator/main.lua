@@ -16,16 +16,12 @@ driver.GoToUrl("https://flightrising.com/main.php?p=hoard&tab=app")
 sleep(2)
 
 local apparel = {}
-local buttons = #driver.findElementsByXPath('//*[@id="hoard-pagination"]/div/a') + 1
+local final
 
-for i = 1, buttons do
-	if i ~= 1 then
-		driver.findElementsByXPath('//*[@id="hoard-pagination"]/div/a')[i-1].click()
-		sleep(2)
-	end
-	
-	for j = 1, #driver.findElementsByXPath('//*[@id="invent"]/span') do
-		driver.findElementsByXPath('//*[@id="invent"]/span['..j..']')[1].click()
+while true do
+	local icons = driver.findElementsByXPath('//*[@id="invent"]/span')
+	for j = 1, #icons do
+		icons[j].click()
 		sleep(0.8)
 		local name = driver.findElementsByXPath('//*[@id="itemprev"]/div[1]/span')[1].text
 		if apparel[#apparel] and apparel[#apparel].name == name then
@@ -38,6 +34,15 @@ for i = 1, buttons do
 		
 		driver.findElementsByXPath('//*[@id="closeprev"]')[1].click()
 	end
+	
+	local arrows = driver.findElementsByXPath('//*[@id="hoard-pagination"]/a')
+	if final and #arrows == 1 then
+		break
+	else
+		final = true
+	end
+	(arrows[2] or arrows[1]).click()
+	sleep(1)
 end
 
 driver.close()
